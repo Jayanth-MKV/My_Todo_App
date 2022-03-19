@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %} Tasks {% endblock title %}
+{% block body %}
+          
+
+<div class = "container my-4">
+    <h2>TODO Tasks</h2>
+    
+        {% if alltodo|length==0 %}
+        <div class="alert alert-dark" role="alert">
+          No Tasks - Enter Your first task
+        </div>
+        {% else %}
+        <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Sno</th>
+            <th scope="col">Task</th>
+            <th scope="col">Description</th>
+            <th scope="col">Time</th>
+            <th scope="col">Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for todo in alltodo %}
+        <tr class="table table-light">
+          <th scope="row">{{loop.index}}</th>
+          <td>{{todo.name}}</td>
+          <td>{{todo.desc}}</td>
+          <td>{{todo.date_created}}</td>
+          <td><a href="/update/{{todo.sno}}"><button type="button" class="btn btn-outline-dark">Update</button></a>
+            <a href="/delete/{{todo.sno}}"><button type="button" class="btn btn-outline-danger">Delete</button></a>
+          </td>            
+        </tr>
+        {% endfor %}  
+        </tbody>
+      </table>
+
+      {% endif %}
+        
+  </div>
+
+{% endblock body %}

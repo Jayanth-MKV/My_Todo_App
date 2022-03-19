@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+
+
+<br/>
+<br/>
+<div class="position-relative " >
+  <div class="position-absolute top-50 start-50 translate-middle  bg-dark text-warning rounded-pill my-2 ps-2 pe-2 border border-dark border border-5"><h1 style="align-content: center;">TODO APP</h1>
+  </div>
+</div>
+<br/>
+      <div class = "container my-3  mb-4">
+        <button type="button" class="btn btn-success btn-lg mt-20">CREATE</button>
+        <button type="button" class="btn btn-info btn-lg me-4 ">LIST</button>
+
+      </div>
+
+      <div class = "container my-4">
+        <h2 style="margin-bottom: 20px; margin: top 20px;">TODO Tasks</h2>
+        
+            {% if alltodo|length==0 %}
+            <div class="alert alert-dark my-4 " role="alert">
+              No Tasks - Enter Your first task
+            </div>
+            {% else %}
+            <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Sno</th>
+                <th scope="col">Task</th>
+                <th scope="col">Description</th>
+                <th scope="col">Time</th>
+                <th scope="col">Operations</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for todo in alltodo %}
+            <tr class="table table-light">
+              <th scope="row">{{loop.index}}</th>
+              <td>{{todo.name}}</td>
+              <td>{{todo.desc}}</td>
+              <td>{{todo.date_created}}</td>
+              <td><a href="/update/{{todo.sno}}"><button type="button" class="btn btn-outline-dark">Update</button></a>
+                <a href="/delete/{{todo.sno}}"><button type="button" class="btn btn-outline-danger">Delete</button></a>
+              </td>            
+            </tr>
+            {% endfor %}  
+            </tbody>
+          </table>
+
+          {% endif %}
+            
+      </div>
+
+{% endblock body %}

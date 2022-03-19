@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} Tasks {% endblock title %}
+{% block body %}
+          
+
+<div class = "container my-4 mb-4">
+    <h2>Create TODO</h2>
+    <form action="/" method="POST">
+      <div class="mb-3">
+        <label for="name" class="form-label"><b> Task Name </b></label>
+        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Enter the name of the Task</div>
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label"><b> Task Description </b></label>
+        <input type="text" class="form-control" id="desc" name="desc">
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+  </div>
+
+
+{% endblock body %}
